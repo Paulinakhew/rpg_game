@@ -1,20 +1,6 @@
-#!/bin/python3
+#!/usr/bin/env python3
 
-# Replace RPG starter project with this code when new instructions are live
-
-def showInstructions():
-  #print a main menu and the commands
-  print('''
-RPG Game
-========
-
-Get to the Garden with a key and a potion. 
-Avoid the monsters!
-
-Commands:
-  go [direction]
-  get [item]
-''')
+import view as v
 
 def showStatus():
   #print the player's current status
@@ -61,7 +47,7 @@ rooms = {
 #start the player in the Hall
 currentRoom = 'Hall'
 
-showInstructions()
+v.showInstructions()
 
 #loop forever
 while True:
