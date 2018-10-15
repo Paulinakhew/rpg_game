@@ -95,10 +95,10 @@ while True:
       print('Can\'t get ' + move[1] + '!')
 
   if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'sword' in inventory:
-    move = input('There is a monster in the room! \n Use your sword to kill it by typing \'kill monster.\'\n')
+    showStatus()
+    move = input('There is a monster in the room! \nUse your sword to kill it by typing \'kill monster.\'\n')
     if move == 'kill monster':
       print('Killed the monster! ')
-      #TODO: REMOVE MONSTER ONCE IT IS KILLED
       del rooms[currentRoom]['item']
     else:
       print('A monster has got you... GAME OVER!')
