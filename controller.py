@@ -29,7 +29,7 @@ rooms = {
         'south' : 'Hall',
         'east' : 'Living Room',
         'up' : 'Attic',
-        'item' : 'set of stairs'
+        'item' : 'ladder'
       },
   'Kitchen' : {
         'north' : 'Hall',
@@ -103,7 +103,7 @@ while True:
   #if they type 'get' first
   if move[0] == 'get' :
     #player has to solve a riddle in order to get the sword
-    if "item" in rooms[currentRoom] and move[1] == 'sword':
+    if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] == 'sword':
       v.riddle()
       riddle_answer = input('>')
       riddle_answer = riddle_answer.lower()
@@ -116,10 +116,10 @@ while True:
         #delete the item from the room
         del rooms[currentRoom]['item']
         #otherwise, if the item isn't there to get
-        
       else:
         print("That is the wrong answer.")
-      
+    elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] == 'ladder':
+      print("can't get ladder!")
     #if the room contains an item, and the item is the one they want to get
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
       #add the item to their inventory
