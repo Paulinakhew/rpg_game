@@ -4,6 +4,7 @@ import view as v
 
 def showStatus():
   #print the player's current status
+
   print('---------------------------')
   print('You are in the ' + currentRoom)
   #print the current inventory
@@ -18,43 +19,53 @@ inventory = []
 
 #a dictionary linking a room to other rooms
 rooms = {
-
-            'Hall' : { 
-                  'south' : 'Kitchen',
-                  'east' : 'Dining Room',
-                  'item' : 'key'
-                },
-            'Kitchen' : {
-                  'north' : 'Hall',
-                  'item' : 'monster',
-                  'east' : 'Garden'
-
-                },
-            'Dining Room' : {
-                  'west' : 'Hall',
-                  'south' : 'Garden',
-                  'item' : 'potion',
-                  'north' : 'Living Room',
-                  'east' : 'Washroom'
-                },
-            'Living Room' : {
-                  'south' : 'Dining Room',
-                  'item' : 'monster'
-                },
-            'Garden' : {
-              'north' : 'Dining Room',
-              'west' : 'Kitchen'
-                }, 
-            'Washroom' : {
-              'west' : 'Dining Room',
-              'item' : 'sword'
-                }
-
-         }
+  'Hall' : { 
+        'south' : 'Kitchen',
+        'east' : 'Dining Room',
+        'item' : 'key',
+        'north' : 'Office'
+      },
+  'Office' : {
+        'south' : 'Hall',
+        'east' : 'Living Room'
+      },
+  'Kitchen' : {
+        'north' : 'Hall',
+        'item' : 'monster',
+        'east' : 'Games Room'
+      },
+  'Dining Room' : {
+        'west' : 'Hall',
+        'south' : 'Games Room',
+        'north' : 'Living Room',
+        'east' : 'Washroom'
+      },
+  'Living Room' : {
+        'south' : 'Dining Room',
+        'item' : 'monster',
+        'west' : 'Office'
+      },
+  'Games Room' : {
+        'north' : 'Dining Room',
+        'west' : 'Kitchen',
+        'item' : 'potion',
+        'east' : 'Garden'
+      }, 
+  'Washroom' : {
+        'west' : 'Dining Room',
+        'item' : 'sword',
+        'south' : 'Garden'
+      },
+  'Garden' : {
+        'west' : 'Games Room',
+        'north' : 'Washroom'
+      }
+}
 
 #start the player in the Hall
 currentRoom = 'Hall'
 
+v.clear_screen()
 v.showInstructions()
 
 #loop forever
