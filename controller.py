@@ -88,8 +88,7 @@ while True:
   move = ''
   while move == '':  
     move = input('>')
-    
-  move = move.lower().split()
+    move = move.lower().split()
 
   #if they type 'go' first
   if move[0] == 'go':
@@ -103,11 +102,9 @@ while True:
 
   #if they type 'get' first
   if move[0] == 'get' :
+    #player has to solve a riddle in order to get the sword
     if "item" in rooms[currentRoom] and move[1] == 'sword':
-      print('''
-      To wield this sword you must prove yourself by answering the following riddle.
-
-      Riddle: I disappear every time you say my name. What am I?''')
+      v.riddle()
       riddle_answer = input('>')
       riddle_answer = riddle_answer.lower()
       if riddle_answer == 'silence':
@@ -154,4 +151,4 @@ while True:
     print('You escaped the house... YOU WIN!')
     break
   
-  #player has to solve a riddle in order to get the sword
+

@@ -17,3 +17,8 @@ Commands:
 
 def clear_screen():
     os.system('clear')
+
+def riddle():
+    print('''
+To wield this sword you must prove yourself by answering the following riddle.
+    Riddle: I disappear every time you say my name. What am I?''')
