@@ -4,7 +4,6 @@ import view as v
 
 def showStatus():
   #print the player's current status
-
   print('---------------------------')
   print('You are in the ' + currentRoom)
   #print the current inventory
@@ -23,7 +22,8 @@ rooms = {
         'south' : 'Kitchen',
         'east' : 'Dining Room',
         'item' : 'key',
-        'north' : 'Office'
+        'north' : 'Office',
+        'west' : 'Closet'
       },
   'Office' : {
         'south' : 'Hall',
@@ -53,12 +53,15 @@ rooms = {
       }, 
   'Washroom' : {
         'west' : 'Dining Room',
-        'item' : 'sword',
         'south' : 'Garden'
       },
   'Garden' : {
         'west' : 'Games Room',
         'north' : 'Washroom'
+      },
+  'Closet' : {
+        'east' : 'Hall',
+        'item' : 'sword'
       }
 }
 
