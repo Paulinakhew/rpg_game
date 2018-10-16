@@ -27,7 +27,9 @@ rooms = {
       },
   'Office' : {
         'south' : 'Hall',
-        'east' : 'Living Room'
+        'east' : 'Living Room',
+        'up' : 'Attic',
+        'item' : 'set of stairs'
       },
   'Kitchen' : {
         'north' : 'Hall',
@@ -60,7 +62,10 @@ rooms = {
         'north' : 'Washroom'
       },
   'Closet' : {
-        'east' : 'Hall',
+        'east' : 'Hall'
+      },
+  'Attic' : {
+        'down' : 'Office',
         'item' : 'sword'
       }
 }
@@ -124,7 +129,6 @@ while True:
   elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
     print('A monster has got you... GAME OVER!')
     break
-
   #player wins if they get to the garden with a key and a potion
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house... YOU WIN!')
