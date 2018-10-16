@@ -103,8 +103,28 @@ while True:
 
   #if they type 'get' first
   if move[0] == 'get' :
+    if "item" in rooms[currentRoom] and move[1] == 'sword':
+      print('''
+      To wield this sword you must prove yourself by answering the following riddle.
+
+      Riddle: I disappear every time you say my name. What am I?''')
+      riddle_answer = input('>')
+      riddle_answer = riddle_answer.lower()
+      if riddle_answer == 'silence':
+        print("That is correct. Congratulations!")
+        #add the item to their inventory
+        inventory += [move[1]]
+        #display a helpful message
+        print(move[1] + ' got!')
+        #delete the item from the room
+        del rooms[currentRoom]['item']
+        #otherwise, if the item isn't there to get
+        
+      else:
+        print("That is the wrong answer.")
+      
     #if the room contains an item, and the item is the one they want to get
-    if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
+    elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
       #add the item to their inventory
       inventory += [move[1]]
       #display a helpful message
@@ -133,3 +153,5 @@ while True:
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house... YOU WIN!')
     break
+  
+  #player has to solve a riddle in order to get the sword
