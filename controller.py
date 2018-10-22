@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import view as v
+import os
 from random import randint
 
 def showStatus():
@@ -106,7 +107,7 @@ while True:
       currentRoom = rooms[currentRoom][move[1]]
     #there is no door (link) to the new room
     else:
-        print('You can\'t go that way!')
+        os.system('cowsay You cannot go that way!')
 
   #if they type 'get' first
   if move[0] == 'get' :
@@ -154,6 +155,7 @@ while True:
           print('The monster attacked you! You are now at {} HP.'.format(health_points))
           if health_points == 0:
             print('A monster has got you... GAME OVER!')
+            os.system('cowsay -d PLEASE TRY AGAIN')
             break
             break
         elif number == 2:
@@ -162,10 +164,12 @@ while True:
 
     else:
       print('A monster has got you... GAME OVER!')
+      os.system('cowsay -d PLEASE TRY AGAIN')
       break
   #player loses if they enter a room with a monster
   elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
     print('A monster has got you... GAME OVER!')
+    os.system('cowsay -d PLEASE TRY AGAIN')
     break
 
   #player wins if they get to the garden with a key and a potion
