@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import view as v
+from random import randint
 
 def showStatus():
   #print the player's current status
@@ -86,7 +87,7 @@ v.showInstructions()
 while True:
 
   showStatus()
-
+  health_points = 100
   #get the player's next 'move'
   #.split() breaks it up into an list array
   #eg typing 'go east' would give the list:
@@ -141,10 +142,19 @@ while True:
 
   if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'sword' in inventory:
     showStatus()
-    move = input('There is a monster in the room! \nUse your sword to kill it by typing \'kill monster.\'\n')
-    if move == 'kill monster':
-      print('Killed the monster! ')
-      del rooms[currentRoom]['item']
+    move = input('There is a monster in the room! \nUse your sword to fight it by typing \'fight monster.\'\n')
+    if move == 'fight monster':
+      health_points = 100
+      while 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+      #generate a random number
+        number = randint(1,2)
+        health_points = 100
+        if number == 1:
+          health_points -= 25
+          print('The monster attacked you! You are now at {} HP.'.format(health_points))
+        else:
+          print('Killed the monster! ')
+          del rooms[currentRoom]['item']
     else:
       print('A monster has got you... GAME OVER!')
       break
@@ -157,5 +167,6 @@ while True:
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house... YOU WIN!')
     break
-  
-
+  if health_points == 0:
+    print('A monster has got you... GAME OVER!')
+    break
