@@ -7,12 +7,13 @@ def showInstructions():
 RPG Game
 ========
 
-Get to the Garden with a key and a potion. 
+Get to the Garden with a key and a potion.
 Avoid the monsters!
 
 Commands:
-  go [direction]
-  get [item]
+go [direction]
+get [item]
+The directions can be north, east, south, west, up, or down.
 ''')
 
 def clear_screen():
