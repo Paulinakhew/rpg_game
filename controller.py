@@ -3,6 +3,7 @@
 import view as v
 import os
 from random import randint
+import model as m
 
 def showStatus():
   #print the player's current status
@@ -87,11 +88,13 @@ currentRoom = 'Hall'
 v.clear_screen()
 v.showInstructions()
 
+health_points = 100
+
 #loop forever
 while True:
 
   showStatus()
-  health_points = 100
+#  health_points = 100
   #get the player's next 'move'
   #.split() breaks it up into an list array
   #eg typing 'go east' would give the list:
@@ -110,6 +113,11 @@ while True:
     #there is no door (link) to the new room
     else:
         os.system('cowsay You cannot go that way!')
+
+  if move[0] == 'drink':
+    if 'health potion' in inventory:
+      health_points = m.add_health(health_points)
+      print('Congrats! Your health is now {} HP.'.format(health_points))
 
   #if they type 'get' first
   if move[0] == 'get' :
@@ -153,7 +161,7 @@ while True:
       #generate a random number
         number = randint(1,2)
         if number == 1:
-          health_points -= 25
+          health_points = m.fight_monster(health_points)
           print('The monster attacked you! You are now at {} HP.'.format(health_points))
           if health_points == 0:
             print('A monster has got you... GAME OVER!')
@@ -185,3 +193,4 @@ while True:
     user_input = input(">")
     if user_input == 'get gift':
       inventory += ['health potion']
+      print("Congrats! You now have a health potion.\nTo use it, type 'drink potion'")
