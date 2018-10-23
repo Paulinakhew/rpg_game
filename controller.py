@@ -48,7 +48,9 @@ rooms = {
   'Living Room' : {
         'south' : 'Dining Room',
         'item' : 'monster',
-        'west' : 'Office'
+        'west' : 'Office',
+        'item' : 'monster',
+        'gift' : 'health potion'
       },
   'Games Room' : {
         'north' : 'Dining Room',
@@ -176,3 +178,10 @@ while True:
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house... YOU WIN!')
     break
+
+    #monster drops potion when you kill it
+  if 'gift' in rooms[currentRoom] and 'item' not in rooms[currentRoom]:
+    print('The monster has dropped a gift!')
+    user_input = input(">")
+    if user_input == 'get gift':
+      inventory += ['health potion']
