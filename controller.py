@@ -156,7 +156,6 @@ while True:
     showStatus()
     move = input('There is a monster in the room! \nUse your sword to fight it by typing \'fight monster.\'\n')
     if move == 'fight monster':
-      health_points = 100
       while 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
       #generate a random number
         number = randint(1,2)
@@ -166,6 +165,7 @@ while True:
           if health_points == 0:
             print('A monster has got you... GAME OVER!')
             os.system('cowsay -d PLEASE TRY AGAIN')
+            break
             break
             break
         elif number == 2:
@@ -194,3 +194,4 @@ while True:
     if user_input == 'get gift':
       inventory += ['health potion']
       print("Congrats! You now have a health potion.\nTo use it, type 'drink potion'")
+      del rooms[currentRoom]['gift']
