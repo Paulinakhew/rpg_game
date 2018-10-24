@@ -118,6 +118,7 @@ while True:
     if 'health potion' in inventory:
       health_points = m.add_health(health_points)
       print('Congrats! Your health is now {} HP.'.format(health_points))
+      inventory.remove('health potion')
 
   #if they type 'get' first
   if move[0] == 'get' :
