@@ -114,11 +114,13 @@ while True:
     else:
         os.system('cowsay You cannot go that way!')
 
-  if move[0] == 'drink':
+  if move[0] == 'drink' and move[1] == 'potion':
     if 'health potion' in inventory:
       health_points = m.add_health(health_points)
       print('Congrats! Your health is now {} HP.'.format(health_points))
       inventory.remove('health potion')
+    else:
+      print('can\'t drink potion!')
 
   #if they type 'get' first
   if move[0] == 'get' :
