@@ -14,6 +14,7 @@ def showStatus():
   #print an item if there is one
   if "item" in rooms[currentRoom]:
     print('You see a ' + rooms[currentRoom]['item'])
+    print('Your current HP: ' + str(health_points))
   print("---------------------------")
 
 #an inventory, which is initially empty
