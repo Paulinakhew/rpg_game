@@ -101,7 +101,6 @@ health_points = 100
 while True:
 
   showStatus()
-#  health_points = 100
   #get the player's next 'move'
   #.split() breaks it up into an list array
   #eg typing 'go east' would give the list:
@@ -148,7 +147,7 @@ while True:
       else:
         print("That is the wrong answer.")
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] == 'ladder':
-      print("can't get ladder!")
+      print("can't get ladder!") #ladder is only an indicator that shows the user that they can move ups
     #if the room contains an item, and the item is the one they want to get
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
       #add the item to their inventory
