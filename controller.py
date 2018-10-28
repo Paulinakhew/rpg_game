@@ -79,8 +79,14 @@ rooms = {
   'Bedroom' : {
         'south' : 'Closet',
         'east' : 'Office',
-        'item' : 'monster'
-      }
+        'item' : 'monster',
+        'north' : 'Cellar'
+      },
+  'Cellar' : {
+        'south' : 'Bedroom',
+        'item' : 'monster',
+        'gift' : 'health potion'
+  }
 }
 
 #start the player in the Hall
