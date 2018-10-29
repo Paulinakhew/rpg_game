@@ -99,7 +99,6 @@ health_points = 100
 
 #loop forever
 while True:
-
   showStatus()
   #get the player's next 'move'
   #.split() breaks it up into an list array
@@ -120,10 +119,14 @@ while True:
     else:
         os.system('cowsay You cannot go that way!')
 
+  #if they try to drink the health potion
   if move[0] == 'drink' and move[1] == 'potion':
+    #check that they have a health potion in their inventory
     if 'health potion' in inventory:
+      #adds 25 HP through calling the function in model
       health_points = m.add_health(health_points)
       print('Congrats! Your health is now {} HP.'.format(health_points))
+      #remove the health potion from inventory once used
       inventory.remove('health potion')
     else:
       print('can\'t drink potion!')
@@ -147,7 +150,7 @@ while True:
       else:
         print("That is the wrong answer.")
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] == 'ladder':
-      print("can't get ladder!") #ladder is only an indicator that shows the user that they can move ups
+      print("can't get ladder!") #ladder is only an indicator that shows the user that they can move up
     #if the room contains an item, and the item is the one they want to get
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
       #add the item to their inventory
