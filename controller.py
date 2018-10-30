@@ -14,7 +14,7 @@ def showStatus():
   #print an item if there is one
   if "item" in rooms[currentRoom]:
     print('You see a ' + rooms[currentRoom]['item'])
-    print('Your current HP: ' + str(health_points))
+  print('Your current HP: ' + str(health_points))
   print("---------------------------")
 
 #an inventory, which is initially empty
@@ -117,7 +117,7 @@ while True:
       currentRoom = rooms[currentRoom][move[1]]
     #there is no door (link) to the new room
     else:
-        os.system('cowsay You cannot go that way!')
+        print('can\'t go that way!')
 
   #if they try to drink the health potion
   if move[0] == 'drink' and move[1] == 'potion':
@@ -149,8 +149,9 @@ while True:
         #otherwise, if the item isn't there to get
       else:
         print("That is the wrong answer.")
+    #the ladder is only there to display that the user can travel up and down
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] == 'ladder':
-      print("can't get ladder!") #ladder is only an indicator that shows the user that they can move up
+      print("can't get ladder!")
     #if the room contains an item, and the item is the one they want to get
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
       #add the item to their inventory
@@ -164,6 +165,7 @@ while True:
       #tell them they can't get it
       print('Can\'t get ' + move[1] + '!')
 
+  #if the user has a sword in their inventory, the game does not end right away for them
   if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'sword' in inventory:
     showStatus()
     move = input('There is a monster in the room! \nUse your sword to fight it by typing \'fight monster.\'\n')
@@ -183,7 +185,7 @@ while True:
         elif number == 2:
           print('Killed the monster! ')
           del rooms[currentRoom]['item']
-
+    #if the user inputs something other than 'fight monster'
     else:
       print('A monster has got you... GAME OVER!')
       os.system('cowsay -d PLEASE TRY AGAIN')
@@ -205,5 +207,5 @@ while True:
     user_input = input(">")
     if user_input == 'get gift':
       inventory += ['health potion']
-      print("Congrats! You now have a health potion.\nTo use it, type 'drink potion'")
+      print('Congrats! You now have a health potion.\nTo use it, type \'drink potion\'')
       del rooms[currentRoom]['gift']
