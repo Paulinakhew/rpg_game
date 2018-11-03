@@ -14,6 +14,7 @@ def showStatus():
   #print an item if there is one
   if "item" in rooms[currentRoom]:
     print('You see a ' + rooms[currentRoom]['item'])
+  #display the user's current health points
   print('Your current HP: ' + str(health_points))
   print("---------------------------")
 
@@ -95,10 +96,10 @@ currentRoom = 'Hall'
 v.clear_screen()
 v.showInstructions()
 
-health_points = 100
+health_points = 25
 
 #loop forever
-while True:
+while health_points > 0:
   showStatus()
   #get the player's next 'move'
   #.split() breaks it up into an list array
@@ -182,6 +183,7 @@ while True:
             break
             break
             break
+            break
         elif number == 2:
           print('Killed the monster! ')
           del rooms[currentRoom]['item']
@@ -201,7 +203,7 @@ while True:
     print('You escaped the house... YOU WIN!')
     break
 
-    #monster drops potion when you kill it
+  #monster drops potion when you kill it
   if 'gift' in rooms[currentRoom] and 'item' not in rooms[currentRoom]:
     print('The monster has dropped a gift!')
     user_input = input(">")
