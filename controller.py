@@ -96,7 +96,7 @@ currentRoom = 'Hall'
 v.clear_screen()
 v.showInstructions()
 
-health_points = 25
+health_points = 100
 
 #loop forever
 while health_points > 0:
@@ -177,13 +177,6 @@ while health_points > 0:
         if number == 1:
           health_points = m.fight_monster(health_points)
           print('The monster attacked you! You are now at {} HP.'.format(health_points))
-          if health_points == 0:
-            print('A monster has got you... GAME OVER!')
-            os.system('cowsay -d PLEASE TRY AGAIN')
-            break
-            break
-            break
-            break
         elif number == 2:
           print('Killed the monster! ')
           del rooms[currentRoom]['item']
