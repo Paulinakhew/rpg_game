@@ -7,6 +7,7 @@ import model as m
 
 def showStatus():
   #print the player's current status
+  print('\n')
   print('---------------------------')
   print('You are in the ' + currentRoom)
   #print the current inventory
@@ -107,9 +108,15 @@ while health_points > 0:
 
   #display all possible options
   print('You can go in these directions:')
-  for key in rooms[currentRoom].keys():
-    if key != 'gift' and key != 'item':
-      print(key)
+  #for key in rooms[currentRoom].keys():
+  #  if key != 'gift' and key != 'item':
+  #    print(key)
+  directions = list(rooms[currentRoom].keys())
+  if 'item' in directions:
+    directions.remove('item')
+  if 'gift' in directions:
+    directions.remove('gift')
+  print(directions)
 
   move = ''
   while move == '':  
