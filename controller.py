@@ -34,7 +34,6 @@ rooms = {
         'south' : 'Hall',
         'east' : 'Living Room',
         'up' : 'Attic',
-        'item' : 'ladder',
         'west' : 'Bedroom'
       },
   'Kitchen' : {
@@ -105,6 +104,13 @@ while health_points > 0:
   #.split() breaks it up into an list array
   #eg typing 'go east' would give the list:
   #['go','east']
+
+  #display all possible options
+  print('You can go in these directions:')
+  for key in rooms[currentRoom].keys():
+    if key != 'gift' and key != 'item':
+      print(key)
+
   move = ''
   while move == '':  
     move = input('>')
@@ -150,9 +156,6 @@ while health_points > 0:
         #otherwise, if the item isn't there to get
       else:
         print("That is the wrong answer.")
-    #the ladder is only there to display that the user can travel up and down
-    elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item'] and move[1] == 'ladder':
-      print("can't get ladder!")
     #if the room contains an item, and the item is the one they want to get
     elif "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
       #add the item to their inventory
