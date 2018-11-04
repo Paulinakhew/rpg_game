@@ -10,13 +10,21 @@ def showStatus():
   print('\n')
   print('---------------------------')
   print('You are in the ' + currentRoom)
+  #display all possible direction options
+  print('You can go in these directions:')
+  directions = list(rooms[currentRoom].keys())
+  if 'item' in directions:
+    directions.remove('item')
+  if 'gift' in directions:
+    directions.remove('gift')
+  print(directions)
   #print the current inventory
   print('Inventory : ' + str(inventory))
+  #display the user's current health points
+  print('Your current HP: ' + str(health_points))
   #print an item if there is one
   if "item" in rooms[currentRoom]:
     print('You see a ' + rooms[currentRoom]['item'])
-  #display the user's current health points
-  print('Your current HP: ' + str(health_points))
   print("---------------------------")
 
 #an inventory, which is initially empty
@@ -106,17 +114,7 @@ while health_points > 0:
   #eg typing 'go east' would give the list:
   #['go','east']
 
-  #display all possible options
-  print('You can go in these directions:')
-  #for key in rooms[currentRoom].keys():
-  #  if key != 'gift' and key != 'item':
-  #    print(key)
-  directions = list(rooms[currentRoom].keys())
-  if 'item' in directions:
-    directions.remove('item')
-  if 'gift' in directions:
-    directions.remove('gift')
-  print(directions)
+
 
   move = ''
   while move == '':  
